@@ -36,5 +36,11 @@ namespace ToDoApp.Controllers
             _repository.CreateToDo(toDo);
             return toDo;
         }
+
+        [HttpPut("{id}")]
+        public void UpdateToDo(Guid id, ToDoDTO toDoDTO)
+        {
+
+        }
     }
 }
