@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using ToDoApp.Entities;
 using ToDoApp.Repositories;
 
 namespace ToDoApp.Controllers
@@ -12,6 +13,13 @@ namespace ToDoApp.Controllers
         public ToDoController()
         {
             _repository = new TemporaryToDoRepository();
+        }
+
+        [HttpGet]
+        public IEnumerable<ToDo> GetToDos()
+        {
+            var toDos = _repository.GetToDos();
+            return toDos;
         }
     }
 }
