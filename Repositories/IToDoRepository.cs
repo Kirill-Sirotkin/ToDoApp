@@ -5,6 +5,7 @@ namespace ToDoApp.Repositories
     public interface IToDoRepository
     {
         public IEnumerable<ToDo> GetToDos();
+        public ToDo GetToDo(Guid id);
         public void CreateToDo(ToDo toDo);
     }
 }

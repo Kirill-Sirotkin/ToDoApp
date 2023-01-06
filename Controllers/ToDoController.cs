@@ -22,6 +22,12 @@ namespace ToDoApp.Controllers
             return _repository.GetToDos();
         }
 
+        [HttpGet("{id}")]
+        public ToDo GetToDos(Guid id)
+        {
+            return _repository.GetToDo(id);
+        }
+
         [HttpPost]
         public ToDo CreateToDo(ToDoDTO toDoDTO)
         {
