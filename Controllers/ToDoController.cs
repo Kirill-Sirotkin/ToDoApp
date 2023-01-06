@@ -60,5 +60,15 @@ namespace ToDoApp.Controllers
 
             _repository.UpdateToDo(updatedToDo);
         }
+
+        [HttpDelete("{id}")]
+        public void DeleteToDo(Guid id)
+        {
+            ToDo toDo = _repository.GetToDo(id);
+
+            if (toDo == null){ return; }
+
+            _repository.DeleteToDo(id);
+        }
     }
 }
