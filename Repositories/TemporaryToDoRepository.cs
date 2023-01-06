@@ -23,5 +23,10 @@ namespace ToDoApp.Repositories
         {
             return _toDoList.Where(toDo => toDo._toDoId == id).SingleOrDefault();
         }
+        public void DeleteToDo(Guid id)
+        {
+            int index = _toDoList.FindIndex(toDo => toDo._toDoId == id);
+            _toDoList.RemoveAt(index);
+        }
     }
 }

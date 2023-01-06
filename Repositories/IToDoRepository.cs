@@ -7,5 +7,6 @@ namespace ToDoApp.Repositories
         public IEnumerable<ToDo> GetToDos();
         public ToDo GetToDo(Guid id);
         public void CreateToDo(ToDo toDo);
+        public void DeleteToDo(Guid id);
     }
 }
