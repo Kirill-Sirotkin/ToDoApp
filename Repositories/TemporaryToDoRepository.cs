@@ -11,6 +11,10 @@ namespace ToDoApp.Repositories
             new ToDo(Guid.NewGuid(), "Shower", Status.NotStarted),
         };
 
+        public void CreateToDo(ToDo toDo)
+        {
+            _toDoList.Add(toDo);
+        }
         public IEnumerable<ToDo> GetToDos()
         {
             return _toDoList;

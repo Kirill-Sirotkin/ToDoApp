@@ -20,5 +20,11 @@ namespace ToDoApp.Controllers
         {
             return _repository.GetToDos();
         }
+
+        [HttpPost]
+        public ToDo CreateToDo(ToDo toDo)
+        {
+            return toDo;
+        }
     }
 }
