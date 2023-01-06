@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using ToDoApp.DTOs;
 using ToDoApp.Entities;
 using ToDoApp.Repositories;
 
@@ -22,8 +23,17 @@ namespace ToDoApp.Controllers
         }
 
         [HttpPost]
-        public ToDo CreateToDo(ToDo toDo)
+        public ToDo CreateToDo(ToDoDTO toDoDTO)
         {
+            ToDo toDo = new ToDo
+            (
+                Guid.NewGuid(),
+                toDoDTO._name,
+                toDoDTO._status,
+                toDoDTO._description
+            );
+
+            _repository.CreateToDo(toDo);
             return toDo;
         }
     }
