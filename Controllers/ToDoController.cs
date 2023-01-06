@@ -46,7 +46,11 @@ namespace ToDoApp.Controllers
         [HttpPut("{id}")]
         public void UpdateToDo(Guid id, ToDoDTO toDoDTO)
         {
+            ToDo toDo = _repository.GetToDo(id);
 
+            if (toDo == null){ return; }
+
+            
         }
     }
 }
