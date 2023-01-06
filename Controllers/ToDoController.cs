@@ -23,7 +23,7 @@ namespace ToDoApp.Controllers
         }
 
         [HttpGet("{id}")]
-        public ToDo GetToDos(Guid id)
+        public ToDo GetToDo(Guid id)
         {
             return _repository.GetToDo(id);
         }
