@@ -2,7 +2,7 @@ using ToDoApp.Entities;
 
 namespace ToDoApp.Repositories
 {
-    public class TemporaryToDoRepository
+    public class TemporaryToDoRepository : IToDoRepository
     {
         public List<ToDo> _toDoList {get; private set;} = new()
         {

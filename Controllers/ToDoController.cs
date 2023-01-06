@@ -8,11 +8,11 @@ namespace ToDoApp.Controllers
     [Route("api/v1/todos")]
     public class ToDoController : ControllerBase
     {
-        private readonly TemporaryToDoRepository _repository;
+        private readonly IToDoRepository _repository;
 
-        public ToDoController()
+        public ToDoController(IToDoRepository repository)
         {
-            _repository = new TemporaryToDoRepository();
+            _repository = repository;
         }
 
         [HttpGet]
