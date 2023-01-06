@@ -19,5 +19,9 @@ namespace ToDoApp.Repositories
         {
             return _toDoList;
         }
+        public ToDo GetToDo(Guid id)
+        {
+            return _toDoList.Where(toDo => toDo._toDoId == id).SingleOrDefault();
+        }
     }
 }

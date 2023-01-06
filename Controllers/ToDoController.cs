@@ -19,7 +19,8 @@ namespace ToDoApp.Controllers
         [HttpGet]
         public IEnumerable<ToDo> GetToDos()
         {
-            return _repository.GetToDos();
+            var toDos = _repository.GetToDos();
+            return toDos;
         }
 
         [HttpPost]
