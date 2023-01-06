@@ -23,10 +23,10 @@ namespace ToDoApp.Repositories
         {
             return _toDoList.Where(toDo => toDo._toDoId == id).SingleOrDefault();
         }
-        public void UpdateToDo(ToDo toDo)
+        public void UpdateToDo(Guid id, ToDo updatedToDo)
         {
-            int index = _toDoList.FindIndex(_toDo => _toDo._toDoId == toDo._toDoId);
-            _toDoList[index] = toDo;
+            int index = _toDoList.FindIndex(toDo => toDo._toDoId == id);
+            _toDoList[index].UpdateToDo(updatedToDo._name, updatedToDo._description, updatedToDo._status);
         }
         public void DeleteToDo(Guid id)
         {

@@ -58,7 +58,7 @@ namespace ToDoApp.Controllers
                 toDoDTO._description
             );
 
-            _repository.UpdateToDo(updatedToDo);
+            _repository.UpdateToDo(id, updatedToDo);
         }
 
         [HttpDelete("{id}")]
