@@ -50,12 +50,15 @@ namespace ToDoApp.Controllers
 
             if (toDo == null){ return; }
 
-            toDo.UpdateToDo
+            ToDo updatedToDo = new ToDo
             (
+                Guid.NewGuid(),
                 toDoDTO._name,
-                toDoDTO._description,
-                toDoDTO._status
+                toDoDTO._status,
+                toDoDTO._description
             );
+
+            _repository.UpdateToDo(updatedToDo);
         }
     }
 }
