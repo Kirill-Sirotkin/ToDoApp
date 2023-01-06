@@ -21,5 +21,14 @@ namespace ToDoApp.Entities
             _createdTimestamp = DateTimeOffset.UtcNow;
             _updatedTimestamp = _createdTimestamp;
         }
+
+        public void UpdateToDo(string name, string description, Status status)
+        {
+            _name = name;
+            _description = description;
+            _status = status;
+
+            _updatedTimestamp = DateTimeOffset.UtcNow;
+        }
     }
 }
