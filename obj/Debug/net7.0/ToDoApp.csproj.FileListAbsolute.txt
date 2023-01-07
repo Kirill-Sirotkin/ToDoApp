@@ -31,3 +31,8 @@ D:\Programming\Projects\ToDoApp\obj\Debug\net7.0\refint\ToDoApp.dll
 D:\Programming\Projects\ToDoApp\obj\Debug\net7.0\ToDoApp.pdb
 D:\Programming\Projects\ToDoApp\obj\Debug\net7.0\ToDoApp.genruntimeconfig.cache
 D:\Programming\Projects\ToDoApp\obj\Debug\net7.0\ref\ToDoApp.dll
+D:\Programming\Projects\ToDoApp\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
+D:\Programming\Projects\ToDoApp\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Programming\Projects\ToDoApp\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+D:\Programming\Projects\ToDoApp\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+D:\Programming\Projects\ToDoApp\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
