@@ -7,7 +7,7 @@ using ToDoApp.Repositories;
 
 namespace ToDoApp.Services
 {
-    public class AuthenticationService
+    public class AuthenticationService : IAuthenticationService
     {
         private readonly IUserRepository _repository;
         private readonly Settings _settings;
