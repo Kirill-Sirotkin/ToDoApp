@@ -27,6 +27,11 @@ namespace ToDoApp.Repositories
             return _userList.Where(user => user._userId == id).SingleOrDefault();
         }
 
+        public User GetUser(string email)
+        {
+            return _userList.Where(user => user._email == email).SingleOrDefault();
+        }
+
         public IEnumerable<User> GetUsers()
         {
             return _userList;
