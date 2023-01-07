@@ -40,6 +40,7 @@ namespace ToDoApp.Entities
         public void UpdatePassword(string password)
         {
             _passwordHash = GetHashedPassword(password, _salt);
+            _updatedTimestamp = DateTimeOffset.UtcNow;
         }
     }
 }
