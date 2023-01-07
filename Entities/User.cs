@@ -37,5 +37,9 @@ namespace ToDoApp.Entities
                 256 / 8
             ));
         }
+        public void UpdatePassword(string password)
+        {
+            _passwordHash = GetHashedPassword(password, _salt);
+        }
     }
 }
