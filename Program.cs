@@ -1,3 +1,6 @@
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using ToDoApp.Entities;
 using ToDoApp.Repositories;
 using ToDoApp.Services;
@@ -13,6 +16,16 @@ builder.Services.AddSingleton(settings);
 builder.Services.AddSingleton<IToDoRepository, TemporaryToDoRepository>();
 builder.Services.AddSingleton<IUserRepository, TemporaryUserRepository>();
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(o => 
+{
+    o.TokenValidationParameters = new TokenValidationParameters() 
+    {
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(settings.BearerKey)),
+        ValidateIssuerSigningKey = true,
+        ValidateAudience = false,
+        ValidateIssuer = false
+    };
+});
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
