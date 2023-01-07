@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using ToDoApp.DTOs;
 using ToDoApp.Entities;
 using ToDoApp.Repositories;
 
@@ -19,6 +20,19 @@ namespace ToDoApp.Controllers
         public IEnumerable<User> GetToDos()
         {
             return _repository.GetUsers();
+        }
+
+        [HttpPost]
+        public User CreateToDo(UserDTO userDTO)
+        {
+            User user = new User
+            (
+                userDTO._email, 
+                userDTO._password
+            );
+
+            _repository.CreateUser(user);
+            return user;
         }
 
         [HttpPut("{id}")]
