@@ -1,3 +1,7 @@
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using Microsoft.IdentityModel.Tokens;
 using ToDoApp.Entities;
 using ToDoApp.Repositories;
 
@@ -33,6 +37,19 @@ namespace ToDoApp.Services
 
 
             return (true, "");
+        }
+        private string GenerateJWToken(ClaimsIdentity subject)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(_settings.BearerKey);
+            var tokenDescriptor = new SecurityTokenDescriptor 
+            {
+                Subject = subject,
+                Expires = DateTime.Now.AddDays(1),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
         }
     }
 }
