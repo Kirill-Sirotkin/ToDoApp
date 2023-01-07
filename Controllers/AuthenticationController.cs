@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using ToDoApp.Entities;
 using ToDoApp.Services;
 
 namespace ToDoApp.Controllers
@@ -15,14 +16,20 @@ namespace ToDoApp.Controllers
         }
 
         [HttpPost("signup")]
-        public IActionResult SignUp(string email, string password)
+        public IActionResult SignUp(AuthenticationRequest request)
         {
-            return Unauthorized();
+            var (success, content) = _authenticationService.SignUp(request._email, request._password);
+            if (!success) { return BadRequest(content); }
+
+            return SignIn(request);
         }
         [HttpPost("signin")]
-        public IActionResult SignIn(string email, string password)
+        public IActionResult SignIn(AuthenticationRequest request)
         {
-            return Unauthorized();
+            var (success, content) = _authenticationService.SignIn(request._email, request._password);
+            if (!success) { return BadRequest(content); }
+
+            return Ok(new AuthenticationResponse() {_token = content});
         }
     }
 }
