@@ -20,5 +20,15 @@ namespace ToDoApp.Controllers
         {
             return _repository.GetUsers();
         }
+
+        [HttpPut("{id}")]
+        public void UpdateUserPassword(Guid id, string password)
+        {
+            User user = _repository.GetUser(id);
+
+            if (user == null){ return; }
+
+            _repository.UpdateUserPassword(id, password);
+        }
     }
 }
