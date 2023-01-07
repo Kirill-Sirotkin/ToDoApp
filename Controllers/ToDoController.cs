@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ToDoApp.DTOs;
 using ToDoApp.Entities;
@@ -5,6 +6,7 @@ using ToDoApp.Repositories;
 
 namespace ToDoApp.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/v1/todos")]
     public class ToDoController : ControllerBase
