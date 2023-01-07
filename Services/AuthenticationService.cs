@@ -34,9 +34,18 @@ namespace ToDoApp.Services
             if (user == null) { return (false, "Invalid email"); }
             if (user._passwordHash != User.GetHashedPassword(password, user._salt)) { return (false, "Wrong password"); }
 
-
-
-            return (true, "");
+            return (true, GenerateJWToken(GenerateClaimsIdentity(user)));
+        }
+        private ClaimsIdentity GenerateClaimsIdentity(User user)
+        {
+            var subject = new ClaimsIdentity
+            (
+                new[] 
+                {
+                    new Claim("id", user._userId.ToString())
+                }
+            );
+            return subject;
         }
         private string GenerateJWToken(ClaimsIdentity subject)
         {
