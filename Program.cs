@@ -1,9 +1,14 @@
+using ToDoApp.Entities;
 using ToDoApp.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var settings = new Settings();
+builder.Configuration.Bind("Settings", settings);
+
 // Add services to the container.
 
+builder.Services.AddSingleton(settings);
 builder.Services.AddSingleton<IToDoRepository, TemporaryToDoRepository>();
 builder.Services.AddSingleton<IUserRepository, TemporaryUserRepository>();
 builder.Services.AddControllers();
