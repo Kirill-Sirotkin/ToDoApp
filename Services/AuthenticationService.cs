@@ -38,13 +38,10 @@ namespace ToDoApp.Services
         }
         private ClaimsIdentity GenerateClaimsIdentity(User user)
         {
-            var subject = new ClaimsIdentity
-            (
-                new[] 
+            var subject = new ClaimsIdentity(new[] 
                 {
                     new Claim("id", user._userId.ToString())
-                }
-            );
+                });
             return subject;
         }
         private string GenerateJWToken(ClaimsIdentity subject)
