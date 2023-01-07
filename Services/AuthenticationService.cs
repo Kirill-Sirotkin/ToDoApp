@@ -23,5 +23,16 @@ namespace ToDoApp.Services
 
             return (true, "");
         }
+        public (bool success, string token) SignIn(string email, string password)
+        {
+            User user = _repository.GetUser(email);
+
+            if (user == null) { return (false, "Invalid email"); }
+            if (user._passwordHash != User.GetHashedPassword(password, user._salt)) { return (false, "Wrong password"); }
+
+
+
+            return (true, "");
+        }
     }
 }
