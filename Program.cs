@@ -6,6 +6,8 @@ using ToDoApp.Repositories;
 using ToDoApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
 
 var settings = new Settings();
 builder.Configuration.Bind("Settings", settings);
@@ -21,7 +23,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     o.TokenValidationParameters = new TokenValidationParameters() 
     {
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(settings.BearerKey)),
-        ValidateIssuerSigningKey = true,
+        ValidateIssuerSigningKey = false,
         ValidateAudience = false,
         ValidateIssuer = false
     };
