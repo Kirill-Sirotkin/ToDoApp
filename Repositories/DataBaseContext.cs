@@ -10,6 +10,6 @@ namespace ToDoApp.Repositories
 
         }
 
-        public DbSet<UserDatabase> _users {get; set;}
+        public DbSet<UserDatabaseModel> _users {get; set;}
     }
 }

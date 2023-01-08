@@ -1,6 +1,6 @@
 namespace ToDoApp.Entities
 {
-    public class UserDatabase
+    public class UserDatabaseModel
     {
         public Guid Id {get; set;}
         public string _email {get; set;}
@@ -8,5 +8,7 @@ namespace ToDoApp.Entities
         public byte[] _salt {get; set;}
         public DateTimeOffset _createdTimestamp {get; set;}
         public DateTimeOffset _updatedTimestamp {get; set;}
+
+        public List<ToDoDatabaseModel> ToDos {get; set;}
     }
 }
