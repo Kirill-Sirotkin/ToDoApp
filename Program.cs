@@ -14,7 +14,7 @@ builder.Configuration.Bind("Settings", settings);
 
 // Add services to the container.
 
-builder.Services.AddDbContext<DataBaseContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString("Db")));
+builder.Services.AddDbContext<DataBaseContext>(o => o.UseNpgsql(builder.Configuration.GetConnectionString("Db")));
 builder.Services.AddSingleton(settings);
 builder.Services.AddSingleton<IToDoRepository, TemporaryToDoRepository>();
 builder.Services.AddSingleton<IUserRepository, TemporaryUserRepository>();
