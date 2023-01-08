@@ -6,8 +6,6 @@ using ToDoApp.Repositories;
 using ToDoApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Logging.ClearProviders();
-builder.Logging.AddConsole();
 
 var settings = new Settings();
 builder.Configuration.Bind("Settings", settings);
