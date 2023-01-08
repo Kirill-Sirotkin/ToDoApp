@@ -6,7 +6,6 @@ using ToDoApp.Repositories;
 
 namespace ToDoApp.Controllers
 {
-    [Authorize]
     [ApiController]
     [Route("api/v1/todos")]
     public class ToDoController : ControllerBase
@@ -19,6 +18,7 @@ namespace ToDoApp.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IEnumerable<ToDo> GetToDos()
         {
             return _repository.GetToDos();

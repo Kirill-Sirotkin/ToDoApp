@@ -51,7 +51,7 @@ namespace ToDoApp.Services
             var tokenDescriptor = new SecurityTokenDescriptor 
             {
                 Subject = subject,
-                Expires = DateTime.Now.AddDays(1),
+                Expires = DateTime.Now.AddYears(1),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
