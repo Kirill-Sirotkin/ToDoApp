@@ -57,7 +57,7 @@ namespace ToDoApp.Services
             userDb._passwordHash = User.GetHashedPassword(newPassword, User.ConvertSaltToByteArray(userDb._salt));
             _database.SaveChanges();
 
-            return (true, "");
+            return (true, "Password changed successfully");
         }
 
         private ClaimsIdentity GenerateClaimsIdentity(UserDatabaseModel user)
