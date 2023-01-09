@@ -25,7 +25,7 @@ namespace ToDoApp.Controllers
         }
 
         [HttpPost]
-        public User CreateToDo(UserDTO userDTO)
+        public User CreateUser(UserDTO userDTO)
         {
             User user = new User
             (
