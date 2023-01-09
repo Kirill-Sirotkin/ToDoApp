@@ -46,6 +46,19 @@ namespace ToDoApp.Entities
                 256 / 8
             ));
         }
+        public static UserDatabaseModel ConvertToDatabaseModel(User user)
+        {
+            return 
+            new UserDatabaseModel
+            {
+                Id = user._userId,
+                _email = user._email,
+                _passwordHash = user._passwordHash,
+                _salt = User.ConvertSaltToString(user._salt),
+                _createdTimestamp = user._createdTimestamp,
+                _updatedTimestamp = user._updatedTimestamp
+            };
+        }
         public void UpdatePassword(string password)
         {
             _passwordHash = GetHashedPassword(password, _salt);
