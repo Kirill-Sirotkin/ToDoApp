@@ -51,7 +51,7 @@ namespace ToDoApp.Controllers
             );
 
             //_repository.CreateToDo(toDo);
-            return _toDoService.CreateToDo(toDo);
+            return _toDoService.CreateToDo(userId, toDo);
         }
 
         [HttpPut("{id}")]

@@ -35,13 +35,20 @@ namespace ToDoApp.Services
             return toDos;
         }
 
-        public ToDoDatabaseModel CreateToDo(ToDo toDo)
+        public ToDoDatabaseModel CreateToDo(Guid userId, ToDo toDo)
         {
+            UserDatabaseModel userDb = _database.Users.SingleOrDefault(u => u.Id == userId);
+
+            if (userDb == null) { return null; }
+
             ToDoDatabaseModel toDoDb = ToDo.ConvertToDatabaseModel(toDo);
+            toDoDb.UserId = userId;
+            toDoDb.User = userDb;
 
             _database.Add(toDoDb);
             _database.SaveChanges();
 
+            toDoDb.User = null;
             return toDoDb;
         }
 
