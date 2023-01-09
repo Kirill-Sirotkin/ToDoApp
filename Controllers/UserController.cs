@@ -35,19 +35,6 @@ namespace ToDoApp.Controllers
 
             _repository.CreateUser(user);
 
-            UserDatabaseModel userDb = new UserDatabaseModel
-            {
-                Id = user._userId,
-                _email = user._email,
-                _passwordHash = user._passwordHash,
-                _salt = user._salt,
-                _createdTimestamp = user._createdTimestamp,
-                _updatedTimestamp = user._updatedTimestamp
-            };
-
-            _database.Add(userDb);
-            _database.SaveChanges();
-
             return user;
         }
 
