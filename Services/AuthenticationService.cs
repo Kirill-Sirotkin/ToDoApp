@@ -25,16 +25,7 @@ namespace ToDoApp.Services
             if (_database.Users.Any(u => u._email == email)) { return (false, "Email already in use"); }
 
             User user = new User(email, password);
-
-            UserDatabaseModel userDb = new UserDatabaseModel
-            {
-                Id = user._userId,
-                _email = user._email,
-                _passwordHash = user._passwordHash,
-                _salt = User.ConvertSaltToString(user._salt),
-                _createdTimestamp = user._createdTimestamp,
-                _updatedTimestamp = user._updatedTimestamp
-            };
+            UserDatabaseModel userDb = User.ConvertToDatabaseModel(user);
 
             _database.Add(userDb);
             _database.SaveChanges();
