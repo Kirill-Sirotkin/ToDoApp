@@ -10,11 +10,13 @@ namespace ToDoApp.Services
     public class AuthenticationService : IAuthenticationService
     {
         private readonly IUserRepository _repository;
+        private readonly DataBaseContext _database;
         private readonly Settings _settings;
 
-        public AuthenticationService(IUserRepository repository, Settings settings)
+        public AuthenticationService(IUserRepository repository, Settings settings, DataBaseContext database)
         {
             _repository = repository;
+            _database = database;
             _settings = settings;
         }
 
@@ -24,6 +26,19 @@ namespace ToDoApp.Services
 
             User user = new User(email, password);
             _repository.CreateUser(user);
+
+            UserDatabaseModel userDb = new UserDatabaseModel
+            {
+                Id = user._userId,
+                _email = user._email,
+                _passwordHash = user._passwordHash,
+                _salt = user._salt,
+                _createdTimestamp = user._createdTimestamp,
+                _updatedTimestamp = user._updatedTimestamp
+            };
+
+            _database.Add(userDb);
+            _database.SaveChanges();
 
             return (true, "");
         }
