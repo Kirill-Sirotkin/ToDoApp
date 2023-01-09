@@ -34,23 +34,23 @@ namespace ToDoApp.Services
         }
         public (bool success, string token) SignIn(string email, string password)
         {
-            User user = _repository.GetUser(email);
+            UserDatabaseModel userDb = _database.Users.SingleOrDefault(u => u._email == email);
 
-            if (user == null) { return (false, "Invalid email"); }
-            if (user._passwordHash != User.GetHashedPassword(password, user._salt)) { return (false, "Wrong password"); }
+            if (userDb == null) { return (false, "Invalid email"); }
+            if (userDb._passwordHash != User.GetHashedPassword(password, User.ConvertSaltToByteArray(userDb._salt))) { return (false, "Wrong password"); }
 
-            return (true, GenerateJWToken(GenerateClaimsIdentity(user)));
+            return (true, GenerateJWToken(GenerateClaimsIdentity(userDb)));
         }
         public (bool success, string content) ChangePassword(Guid userId, string oldPassword, string newPassword)
         {
             return (true, "");
         }
 
-        private ClaimsIdentity GenerateClaimsIdentity(User user)
+        private ClaimsIdentity GenerateClaimsIdentity(UserDatabaseModel user)
         {
             var subject = new ClaimsIdentity(new[] 
                 {
-                    new Claim("id", user._userId.ToString())
+                    new Claim("id", user.Id.ToString())
                 });
             return subject;
         }
