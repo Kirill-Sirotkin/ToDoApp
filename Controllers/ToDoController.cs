@@ -55,21 +55,19 @@ namespace ToDoApp.Controllers
         }
 
         [HttpPut("{id}")]
-        public void UpdateToDo(Guid id, ToDoDTO toDoDTO)
+        public void UpdateToDo(Guid toDoId, ToDoDTO toDoDTO)
         {
-            ToDo toDo = _repository.GetToDo(id);
-
-            if (toDo == null){ return; }
+            var userId = Guid.Parse(User.FindFirst("id").Value.ToString());
 
             ToDo updatedToDo = new ToDo
             (
-                Guid.NewGuid(),
+                userId,
                 toDoDTO._name,
                 toDoDTO._status,
                 toDoDTO._description
             );
 
-            _repository.UpdateToDo(id, updatedToDo);
+            _toDoService.UpdateToDo(userId, toDoId, updatedToDo);
         }
 
         [HttpDelete("{id}")]
