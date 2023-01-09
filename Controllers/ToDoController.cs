@@ -24,8 +24,6 @@ namespace ToDoApp.Controllers
         [HttpGet]
         public List<ToDoDatabaseModel> GetToDos()
         {
-            //return _repository.GetToDos();
-            
             var userId = Guid.Parse(User.FindFirst("id").Value.ToString());
 
             return _toDoService.GetToDos(userId);
@@ -44,7 +42,6 @@ namespace ToDoApp.Controllers
                 toDoDTO._description
             );
 
-            //_repository.CreateToDo(toDo);
             return _toDoService.CreateToDo(userId, toDo);
         }
 
