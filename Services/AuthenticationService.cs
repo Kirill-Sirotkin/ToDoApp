@@ -53,6 +53,7 @@ namespace ToDoApp.Services
             { return (false, "Wrong old password"); }
 
             userDb._passwordHash = User.GetHashedPassword(newPassword, User.ConvertSaltToByteArray(userDb._salt));
+            userDb._updatedTimestamp = DateTimeOffset.UtcNow;
             _database.SaveChanges();
 
             return (true, "Password changed successfully");
