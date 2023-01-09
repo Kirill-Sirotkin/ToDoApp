@@ -8,7 +8,5 @@ namespace ToDoApp.Entities
         public string _salt {get; set;}
         public DateTimeOffset _createdTimestamp {get; set;}
         public DateTimeOffset _updatedTimestamp {get; set;}
-
-        public List<ToDoDatabaseModel> ToDos {get; set;}
     }
 }
