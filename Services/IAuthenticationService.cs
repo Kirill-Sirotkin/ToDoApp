@@ -4,6 +4,6 @@ namespace ToDoApp.Services
     {
         public (bool success, string content) SignUp(string email, string password);
         public (bool success, string token) SignIn(string email, string password);
-        public (bool success, string content) ChangePassword(Guid userId, string newPassword);
+        public (bool success, string content) ChangePassword(Guid userId, string oldPassword, string newPassword);
     }
 }
