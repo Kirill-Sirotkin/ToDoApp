@@ -34,7 +34,10 @@ namespace ToDoApp.Entities
         }
         public static byte[] GetSalt()
         {
-            return RandomNumberGenerator.GetBytes(128 / 8);
+            byte[] array = RandomNumberGenerator.GetBytes(128 / 8);
+            string arrayToString = ConvertSaltToString(array);
+
+            return ConvertSaltToByteArray(arrayToString);
         }
         public static string GetHashedPassword(string password, byte[] salt)
         {
