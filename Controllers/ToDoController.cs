@@ -31,12 +31,6 @@ namespace ToDoApp.Controllers
             return _toDoService.GetToDos(userId);
         }
 
-        [HttpGet("{id}")]
-        public ToDo GetToDo(Guid id)
-        {
-            return _repository.GetToDo(id);
-        }
-
         [HttpPost]
         public ToDoDatabaseModel CreateToDo(ToDoDTO toDoDTO)
         {
