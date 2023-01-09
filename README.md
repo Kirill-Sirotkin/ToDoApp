@@ -8,19 +8,19 @@ Hello! In this README I will give a description of the project and explain how t
 This app has been done using the C# language, ASP.NET Core with Entity Framework and uses PostgreSQL as a database.
 To create the project, debug and edit files VSCode application was used.
 It exposes a set of REST APIs that allow the user to:
-1. Sign up
-2. Sign in
-3. Change password
-4. Get a list of user's ToDos (optionally filtered by status of ToDo)
-5. Create new ToDos
-6. Update (edit) ToDos
-7. Delete ToDos
+  1. Sign up
+  2. Sign in
+  3. Change password
+  4. Get a list of user's ToDos (optionally filtered by status of ToDo)
+  5. Create new ToDos
+  6. Update (edit) ToDos
+  7. Delete ToDos
 
 The user must be logged in to use APIs №№3-7.
 
 The database consists of 2 tables:
-1. Users
-2. ToDos
+  1. Users
+  2. ToDos
 
 The tables are arranged in a one-to-many relationship, meaning that one user can have multiple ToDos, but every ToDo belongs only to a single unique user.
 
@@ -72,6 +72,7 @@ Then, you can use the UI to make API calls. Click the API you need -> click "Try
 ![11](https://user-images.githubusercontent.com/92231063/211402033-c7de18c4-9785-44e8-94e8-855afd216fca.png)
 
 If signup is successful, you will be automatically signed in and given a JWToken in the response body of the request (JWT also given on successful standalone signin API call). This token is needed to authorize yourself and use all other REST APIs.
+![17](https://user-images.githubusercontent.com/92231063/211406133-1469d55b-e7e9-4d1d-bb35-b56260ee3421.png)
 
 To authorize using the JWT, user the "Authorize" button in SwaggerUI:
 ![12](https://user-images.githubusercontent.com/92231063/211403303-3481eefe-1a2e-40a0-9241-d71cfb47b0f5.png)
@@ -93,6 +94,37 @@ For example, here is GET a list of all ToDos API call:
 Notice the Authorization tab between the call and the response. The JWT can be entered there. Alternatively, it can be added in the Headers tab, using Key=Authorization and Value=Bearer <token value>:
 ![16](https://user-images.githubusercontent.com/92231063/211405244-aa3aea2c-6acc-4477-b5b7-ca9c6908f7d1.png)
 
-With that, the instruction for the app are complete! I hope you enjoy using it.
+With that, the instructions for the app are complete! I hope you enjoy using it.
   
 *Section 4. Additional information*
+
+In this section I will write some more about the project.
+The API endpoints are the following:
+  1. http://localhost:5019/api/v1/signup 
+    POST that allows the user to create their "account" in the system.
+    Does not require authorization.
+    Accepts email and password (although it does not check if the "email" parameter is and actual email. Therefore you can just enter a nickname)
+  2. http://localhost:5019/api/v1/signin 
+    POST that allows the user to sign in and receive a JWToken.
+    Does not require authorization.
+    Accepts email and password, returns JWT.
+  3. http://localhost:5019/api/v1/changePassword 
+    PUT that allows and existing user to change their password.
+    Requires authorization.
+    Accepts old password (to validate the user) and new password, which replaces the old one.
+  4. http://localhost:5019/api/v1/todos?status=[status] 
+    GET that allows the user to see the list of their ToDos.
+    Requires authorization.
+    Accepts an optional parameter for the status of ToDo. Without the parameter, retuns all ToDos of that user. With parameter, returns only ToDos with that status.
+  5. http://localhost:5019/api/v1/todos 
+    POST that allows the user to create a new ToDo.
+    Requires authorization.
+    Accepts name, description (optional, can be null), and status.
+  6. http://localhost:5019/api/v1/todos/id 
+    PUT that allows the user to update/edit one of their ToDos.
+    Requires authorization.
+    Accepts ToDoId, name, description (optional, can be null), and status. Replaces old properties of a ToDo with the new ones.
+  7. http://localhost:5019/api/v1/todos/id 
+    DELETE that allows the user to delete one of their ToDos.
+    Requires authorization.
+    Accepts ToDoId. Removes the ToDo from the database.
