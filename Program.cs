@@ -19,6 +19,7 @@ builder.Services.AddSingleton(settings);
 builder.Services.AddSingleton<IToDoRepository, TemporaryToDoRepository>();
 builder.Services.AddSingleton<IUserRepository, TemporaryUserRepository>();
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+builder.Services.AddScoped<IToDoService, ToDoService>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(o => 
 {
     o.TokenValidationParameters = new TokenValidationParameters() 
