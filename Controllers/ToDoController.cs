@@ -75,13 +75,15 @@ namespace ToDoApp.Controllers
         }
 
         [HttpDelete("{id}")]
-        public void DeleteToDo(Guid id)
+        public IActionResult DeleteToDo(Guid id)
         {
-            ToDo toDo = _repository.GetToDo(id);
+            var userId = Guid.Parse(User.FindFirst("id").Value.ToString());
 
-            if (toDo == null){ return; }
+            var (success, content) = _toDoService.DeleteToDo(userId, id);
 
-            _repository.DeleteToDo(id);
+            if (!success) { return BadRequest(content); }
+
+            return Ok(content);
         }
     }
 }
