@@ -24,7 +24,7 @@ The database consists of 2 tables:
 
 The tables are arranged in a one-to-many relationship, meaning that one user can have multiple ToDos, but every ToDo belongs only to a single unique user.
 
-*Section 2. Setup*
+## **Section 2. Setup**
 
 Before using the APIs, the app needs to be set up.
 As mentioned above, the project was done in VSCode. For better results I recommend using it too. However, any code editor should work.
@@ -55,7 +55,7 @@ The relevant database migrations should be present in the Migrations folder. The
 
 With that, the setup should be done.
 
-*Section 3. Using the app*
+## **Section 3. Using the app**
 
 Now you can run the app. To do it in VSCode, press f5 or navigate to the debug tab and press "run and debug".
 ![7](https://user-images.githubusercontent.com/92231063/211399691-ca4ba6f1-7641-44e3-a07d-07df94a38d78.png)
@@ -96,7 +96,7 @@ Notice the Authorization tab between the call and the response. The JWT can be e
 
 With that, the instructions for the app are complete! I hope you enjoy using it.
   
-*Section 4. Additional information*
+## **Section 4. Additional information**
 
 In this section I will write some more about the project.
 
