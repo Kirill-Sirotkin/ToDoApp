@@ -22,11 +22,13 @@ namespace ToDoApp.Controllers
         }
 
         [HttpGet]
-        public List<ToDoDatabaseModel> GetToDos()
+        public List<ToDoDatabaseModel> GetToDos(Status? status)
         {
             var userId = Guid.Parse(User.FindFirst("id").Value.ToString());
 
-            return _toDoService.GetToDos(userId);
+            if (status == null) { return _toDoService.GetToDos(userId); }
+
+            return _toDoService.GetToDos(userId, (Status)status);
         }
 
         [HttpPost]
