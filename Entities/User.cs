@@ -1,4 +1,5 @@
 using System.Security.Cryptography;
+using System.Text;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 
 namespace ToDoApp.Entities
@@ -23,6 +24,14 @@ namespace ToDoApp.Entities
             _updatedTimestamp = _createdTimestamp;
         }
         
+        public static string ConvertSaltToString(byte[] salt)
+        {
+            return Encoding.UTF8.GetString(salt);
+        }
+        public static byte[] ConvertSaltToByteArray(string salt)
+        {
+            return Encoding.UTF8.GetBytes(salt);
+        }
         public static byte[] GetSalt()
         {
             return RandomNumberGenerator.GetBytes(128 / 8);
