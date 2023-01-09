@@ -5,8 +5,8 @@ using ToDoApp.Repositories;
 
 namespace ToDoApp.Controllers
 {
-    [ApiController]
-    [Route("api/v1")]
+    //[ApiController]
+    //[Route("api/v1")]
     public class UserController : ControllerBase
     {
         private readonly IUserRepository _repository;
@@ -18,13 +18,13 @@ namespace ToDoApp.Controllers
             _repository = repository;
         }
         
-        [HttpGet]
+        //[HttpGet]
         public IEnumerable<User> GetToDos()
         {
             return _repository.GetUsers();
         }
 
-        [HttpPost]
+        //[HttpPost]
         public User CreateUser(UserDTO userDTO)
         {
             User user = new User
@@ -38,7 +38,7 @@ namespace ToDoApp.Controllers
             return user;
         }
 
-        [HttpPut("{id}")]
+        //[HttpPut("{id}")]
         public void UpdateUserPassword(Guid id, string password)
         {
             User user = _repository.GetUser(id);
