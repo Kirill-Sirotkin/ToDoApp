@@ -66,7 +66,33 @@ To make REST API calls, you can use the SwaggerUI or Postman.
 To use Swagger, navigate to http://localhost:5019/swagger. This will open the following page:
 ![8](https://user-images.githubusercontent.com/92231063/211400853-20918bd3-d8d6-4055-843c-0735e6cec6b7.png)
 
-Then, you can use the UI to make API calls. Click the API you need -> click "Try it out" button -> fill the parameter/body of the call (if needed) -> click "Execute" button.
+Then, you can use the UI to make API calls. Click the API you need -> click "Try it out" button -> fill the parameter/body of the call (if needed) -> click "Execute" button. Here is an example of "Signup" API:
 ![9](https://user-images.githubusercontent.com/92231063/211401990-de4efbeb-3d32-40f7-8336-00e578316cb1.png)
 ![10](https://user-images.githubusercontent.com/92231063/211402016-1002609e-80e2-4fa2-8995-e1c16443bcdc.png)
 ![11](https://user-images.githubusercontent.com/92231063/211402033-c7de18c4-9785-44e8-94e8-855afd216fca.png)
+
+If signup is successful, you will be automatically signed in and given a JWToken in the response body of the request (JWT also given on successful standalone signin API call). This token is needed to authorize yourself and use all other REST APIs.
+
+To authorize using the JWT, user the "Authorize" button in SwaggerUI:
+![12](https://user-images.githubusercontent.com/92231063/211403303-3481eefe-1a2e-40a0-9241-d71cfb47b0f5.png)
+
+This will open a small context window where you can enter the token. Don't forget to add "Bearer ", *then* paste the token!
+![13](https://user-images.githubusercontent.com/92231063/211403524-4996c359-7b8d-438a-ada6-d9272dde01ac.png)
+
+After that, other APIs should become available. Without authorization, they will give error 401.
+
+Alternatively, it is possible to make calls using Postman.
+For example, here is GET a list of all ToDos API call:
+
+(without specifying status)
+![14](https://user-images.githubusercontent.com/92231063/211404467-0902ca93-c0b9-4fca-9fcb-9c0dc8d208d9.png)
+
+(with a specific status)
+![15](https://user-images.githubusercontent.com/92231063/211404635-de88dd13-6220-46f8-a22d-3c9d7b2de8d1.png)
+
+Notice the Authorization tab between the call and the response. The JWT can be entered there. Alternatively, it can be added in the Headers tab, using Key=Authorization and Value=Bearer <token value>:
+![16](https://user-images.githubusercontent.com/92231063/211405244-aa3aea2c-6acc-4477-b5b7-ca9c6908f7d1.png)
+
+With that, the instruction for the app are complete! I hope you enjoy using it.
+  
+*Section 4. Additional information*
