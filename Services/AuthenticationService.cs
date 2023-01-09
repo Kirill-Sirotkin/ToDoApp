@@ -52,6 +52,11 @@ namespace ToDoApp.Services
 
             return (true, GenerateJWToken(GenerateClaimsIdentity(user)));
         }
+        public (bool success, string content) ChangePassword(Guid userId, string oldPassword, string newPassword)
+        {
+            return (true, "");
+        }
+
         private ClaimsIdentity GenerateClaimsIdentity(User user)
         {
             var subject = new ClaimsIdentity(new[] 
