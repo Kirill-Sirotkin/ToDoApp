@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using ToDoApp.Entities;
 
 namespace ToDoApp.DTOs
 {
