@@ -18,7 +18,7 @@ builder.Services.AddDbContext<DataBaseContext>(o => o.UseNpgsql(builder.Configur
 builder.Services.AddSingleton(settings);
 builder.Services.AddSingleton<IToDoRepository, TemporaryToDoRepository>();
 builder.Services.AddSingleton<IUserRepository, TemporaryUserRepository>();
-builder.Services.AddSingleton<IAuthenticationService, AuthenticationService>();
+builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(o => 
 {
     o.TokenValidationParameters = new TokenValidationParameters() 
