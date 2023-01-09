@@ -55,7 +55,7 @@ namespace ToDoApp.Controllers
         }
 
         [HttpPut("{id}")]
-        public void UpdateToDo(Guid id, ToDoDTO toDoDTO)
+        public IActionResult UpdateToDo(Guid id, ToDoDTO toDoDTO)
         {
             var userId = Guid.Parse(User.FindFirst("id").Value.ToString());
 
@@ -67,7 +67,11 @@ namespace ToDoApp.Controllers
                 toDoDTO._description
             );
 
-            _toDoService.UpdateToDo(userId, id, updatedToDo);
+            var (success, content) = _toDoService.UpdateToDo(userId, id, updatedToDo);
+
+            if (!success) { return BadRequest(content); }
+
+            return Ok(content);
         }
 
         [HttpDelete("{id}")]
