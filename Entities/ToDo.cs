@@ -22,6 +22,19 @@ namespace ToDoApp.Entities
             _updatedTimestamp = _createdTimestamp;
         }
 
+        public static ToDoDatabaseModel ConvertToDatabaseModel(ToDo toDo)
+        {
+            return 
+            new ToDoDatabaseModel
+            {
+                Id = toDo._toDoId,
+                _name = toDo._name,
+                _description = toDo._description,
+                _createdTimestamp = toDo._createdTimestamp,
+                _updatedTimestamp = toDo._updatedTimestamp,
+                _status = toDo._status
+            };
+        }
         public void UpdateToDo(string name, string description, Status status)
         {
             _name = name;
