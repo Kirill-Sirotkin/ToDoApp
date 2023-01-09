@@ -54,3 +54,19 @@ The relevant database migrations should be present in the Migrations folder. The
 ![5](https://user-images.githubusercontent.com/92231063/211397686-2f9c5be0-2cdc-41e0-a874-d399f22f01e4.png)
 
 With that, the setup should be done.
+
+*Section 3. Using the app*
+
+Now you can run the app. To do it in VSCode, press f5 or navigate to the debug tab and press "run and debug".
+![7](https://user-images.githubusercontent.com/92231063/211399691-ca4ba6f1-7641-44e3-a07d-07df94a38d78.png)
+
+This process will take a few seconds, after which a browser window will open.
+
+To make REST API calls, you can use the SwaggerUI or Postman.
+To use Swagger, navigate to http://localhost:5019/swagger. This will open the following page:
+![8](https://user-images.githubusercontent.com/92231063/211400853-20918bd3-d8d6-4055-843c-0735e6cec6b7.png)
+
+Then, you can use the UI to make API calls. Click the API you need -> click "Try it out" button -> fill the parameter/body of the call (if needed) -> click "Execute" button.
+![9](https://user-images.githubusercontent.com/92231063/211401990-de4efbeb-3d32-40f7-8336-00e578316cb1.png)
+![10](https://user-images.githubusercontent.com/92231063/211402016-1002609e-80e2-4fa2-8995-e1c16443bcdc.png)
+![11](https://user-images.githubusercontent.com/92231063/211402033-c7de18c4-9785-44e8-94e8-855afd216fca.png)
