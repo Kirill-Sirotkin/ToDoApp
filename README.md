@@ -99,6 +99,7 @@ With that, the instructions for the app are complete! I hope you enjoy using it.
 *Section 4. Additional information*
 
 In this section I will write some more about the project.
+
 The API endpoints are the following:
   1. http://localhost:5019/api/v1/signup 
     POST that allows the user to create their "account" in the system.
@@ -128,3 +129,15 @@ The API endpoints are the following:
     DELETE that allows the user to delete one of their ToDos.
     Requires authorization.
     Accepts ToDoId. Removes the ToDo from the database.
+
+The project structure is the following:
+  1. Controllers: responsible for exposing REST APIs, using routes. They depend on services.
+    Main version of the app uses 2 controllers: Authorization (responsible for APIs related to user handling) and ToDo (responsible for APIs related to ToDo handling). 
+  2. DTOs: Data Transfer Objects, used to expose only needed field to the user of API.
+    There are 2 DTOs: for User and ToDo.
+  3. Entities: various classes that are used to execute the functionality of the app. Defines the User and their methods, ToDo and their methods, Settings for JWT and other.
+  4. Migrations: migrations of data models into the database.
+  5. Repositories: contains the database context to use for migrations and dependency injection.
+  6. Services: contains scripts that handle interactions with the database. They take information from the controllers and perform the API functionality.
+  
+Notice that there are some unused scripts, such as UserController, TemporaryToDoRepository, etc. They were needed during initial stages of development and testing, but they do not fulfill the core requirements of the project. I decided to keep them in the project, just in case.
