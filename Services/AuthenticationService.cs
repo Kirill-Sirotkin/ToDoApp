@@ -22,11 +22,9 @@ namespace ToDoApp.Services
 
         public (bool success, string content) SignUp(string email, string password)
         {
-            if (_repository.GetUser(email) != null) { return (false, "Email already in use"); }
             if (_database.Users.Any(u => u._email == email)) { return (false, "Email already in use"); }
 
             User user = new User(email, password);
-            _repository.CreateUser(user);
 
             UserDatabaseModel userDb = new UserDatabaseModel
             {
