@@ -10,9 +10,11 @@ namespace ToDoApp.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserRepository _repository;
+        private readonly DataBaseContext _database;
 
-        public UserController(IUserRepository repository)
+        public UserController(IUserRepository repository, DataBaseContext database)
         {
+            _database = database;
             _repository = repository;
         }
         
