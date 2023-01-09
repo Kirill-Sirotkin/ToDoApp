@@ -3,7 +3,7 @@ Small app to keep track of ToDos
 
 Hello! In this README I will give a description of the project and explain how to run this ToDoApp.
 
-*Section 1. Description*
+## **Section 1. Description**
 
 This app has been done using the C# language, ASP.NET Core with Entity Framework and uses PostgreSQL as a database.
 To create the project, debug and edit files VSCode application was used.
@@ -24,7 +24,7 @@ The database consists of 2 tables:
 
 The tables are arranged in a one-to-many relationship, meaning that one user can have multiple ToDos, but every ToDo belongs only to a single unique user.
 
-*Section 2. Setup*
+## **Section 2. Setup**
 
 Before using the APIs, the app needs to be set up.
 As mentioned above, the project was done in VSCode. For better results I recommend using it too. However, any code editor should work.
@@ -55,7 +55,7 @@ The relevant database migrations should be present in the Migrations folder. The
 
 With that, the setup should be done.
 
-*Section 3. Using the app*
+## **Section 3. Using the app**
 
 Now you can run the app. To do it in VSCode, press f5 or navigate to the debug tab and press "run and debug".
 ![7](https://user-images.githubusercontent.com/92231063/211399691-ca4ba6f1-7641-44e3-a07d-07df94a38d78.png)
@@ -96,9 +96,10 @@ Notice the Authorization tab between the call and the response. The JWT can be e
 
 With that, the instructions for the app are complete! I hope you enjoy using it.
   
-*Section 4. Additional information*
+## **Section 4. Additional information**
 
 In this section I will write some more about the project.
+
 The API endpoints are the following:
   1. http://localhost:5019/api/v1/signup 
     POST that allows the user to create their "account" in the system.
@@ -128,3 +129,15 @@ The API endpoints are the following:
     DELETE that allows the user to delete one of their ToDos.
     Requires authorization.
     Accepts ToDoId. Removes the ToDo from the database.
+
+The project structure is the following:
+  1. Controllers: responsible for exposing REST APIs, using routes. They depend on services.
+    Main version of the app uses 2 controllers: Authorization (responsible for APIs related to user handling) and ToDo (responsible for APIs related to ToDo handling). 
+  2. DTOs: Data Transfer Objects, used to expose only needed field to the user of API.
+    There are 2 DTOs: for User and ToDo.
+  3. Entities: various classes that are used to execute the functionality of the app. Defines the User and their methods, ToDo and their methods, Settings for JWT and other.
+  4. Migrations: migrations of data models into the database.
+  5. Repositories: contains the database context to use for migrations and dependency injection.
+  6. Services: contains scripts that handle interactions with the database. They take information from the controllers and perform the API functionality.
+  
+Notice that there are some unused scripts, such as UserController, TemporaryToDoRepository, etc. They were needed during initial stages of development and testing, but they do not fulfill the core requirements of the project. I decided to keep them in the project, just in case.
