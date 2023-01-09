@@ -33,9 +33,11 @@ namespace ToDoApp.Controllers
         [HttpPost]
         public ToDo CreateToDo(ToDoDTO toDoDTO)
         {
+            var userId = User.FindFirst("id").ToString();
+
             ToDo toDo = new ToDo
             (
-                Guid.NewGuid(),
+                Guid.Parse(userId),
                 toDoDTO._name,
                 toDoDTO._status,
                 toDoDTO._description
