@@ -9,13 +9,11 @@ namespace ToDoApp.Services
 {
     public class AuthenticationService : IAuthenticationService
     {
-        private readonly IUserRepository _repository;
         private readonly DataBaseContext _database;
         private readonly Settings _settings;
 
-        public AuthenticationService(IUserRepository repository, Settings settings, DataBaseContext database)
+        public AuthenticationService(Settings settings, DataBaseContext database)
         {
-            _repository = repository;
             _database = database;
             _settings = settings;
         }
