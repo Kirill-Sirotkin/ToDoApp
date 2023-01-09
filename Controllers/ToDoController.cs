@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using ToDoApp.DTOs;
 using ToDoApp.Entities;
 using ToDoApp.Repositories;
+using ToDoApp.Services;
 
 namespace ToDoApp.Controllers
 {
@@ -12,16 +13,22 @@ namespace ToDoApp.Controllers
     public class ToDoController : ControllerBase
     {
         private readonly IToDoRepository _repository;
+        private readonly IToDoService _toDoService;
 
-        public ToDoController(IToDoRepository repository)
+        public ToDoController(IToDoRepository repository, IToDoService toDoService)
         {
+            _toDoService = toDoService;
             _repository = repository;
         }
 
         [HttpGet]
-        public IEnumerable<ToDo> GetToDos()
+        public List<ToDoDatabaseModel> GetToDos()
         {
-            return _repository.GetToDos();
+            //return _repository.GetToDos();
+            
+            var userId = Guid.Parse(User.FindFirst("id").Value.ToString());
+
+            return _toDoService.GetToDos(userId);
         }
 
         [HttpGet("{id}")]
@@ -31,20 +38,20 @@ namespace ToDoApp.Controllers
         }
 
         [HttpPost]
-        public ToDo CreateToDo(ToDoDTO toDoDTO)
+        public ToDoDatabaseModel CreateToDo(ToDoDTO toDoDTO)
         {
-            var userId = User.FindFirst("id").Value.ToString();
+            var userId = Guid.Parse(User.FindFirst("id").Value.ToString());
 
             ToDo toDo = new ToDo
             (
-                Guid.Parse(userId),
+                userId,
                 toDoDTO._name,
                 toDoDTO._status,
                 toDoDTO._description
             );
 
-            _repository.CreateToDo(toDo);
-            return toDo;
+            //_repository.CreateToDo(toDo);
+            return _toDoService.CreateToDo(toDo);
         }
 
         [HttpPut("{id}")]
