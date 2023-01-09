@@ -36,13 +36,27 @@ namespace ToDoApp.Services
         {
             UserDatabaseModel userDb = _database.Users.SingleOrDefault(u => u._email == email);
 
-            if (userDb == null) { return (false, "Invalid email"); }
-            if (userDb._passwordHash != User.GetHashedPassword(password, User.ConvertSaltToByteArray(userDb._salt))) { return (false, "Wrong password"); }
+            if (userDb == null) 
+            { return (false, "Invalid email"); }
+
+            if (userDb._passwordHash != User.GetHashedPassword(password, User.ConvertSaltToByteArray(userDb._salt))) 
+            { return (false, "Wrong password"); }
 
             return (true, GenerateJWToken(GenerateClaimsIdentity(userDb)));
         }
         public (bool success, string content) ChangePassword(Guid userId, string oldPassword, string newPassword)
         {
+            UserDatabaseModel userDb = _database.Users.SingleOrDefault(u => u.Id == userId);
+
+            if (userDb == null) 
+            { return (false, "User not found"); }
+
+            if (userDb._passwordHash != User.GetHashedPassword(oldPassword, User.ConvertSaltToByteArray(userDb._salt))) 
+            { return (false, "Wrong old password"); }
+
+            userDb._passwordHash = User.GetHashedPassword(newPassword, User.ConvertSaltToByteArray(userDb._salt));
+            _database.SaveChanges();
+
             return (true, "");
         }
 
