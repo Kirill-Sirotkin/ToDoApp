@@ -66,6 +66,7 @@ namespace ToDoApp.Services
             toDoDb._name = toDo._name;
             toDoDb._description = toDo._description;
             toDoDb._status = toDo._status;
+            toDoDb._updatedTimestamp = DateTimeOffset.UtcNow;
 
             _database.SaveChanges();
 
