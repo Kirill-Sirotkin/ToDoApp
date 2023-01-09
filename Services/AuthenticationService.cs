@@ -32,7 +32,7 @@ namespace ToDoApp.Services
                 Id = user._userId,
                 _email = user._email,
                 _passwordHash = user._passwordHash,
-                _salt = user._salt,
+                _salt = User.ConvertSaltToString(user._salt),
                 _createdTimestamp = user._createdTimestamp,
                 _updatedTimestamp = user._updatedTimestamp
             };
