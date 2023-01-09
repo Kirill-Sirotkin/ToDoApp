@@ -3,7 +3,7 @@ Small app to keep track of ToDos
 
 Hello! In this README I will give a description of the project and explain how to run this ToDoApp.
 
-##**Section 1. Description**
+## **Section 1. Description**
 
 This app has been done using the C# language, ASP.NET Core with Entity Framework and uses PostgreSQL as a database.
 To create the project, debug and edit files VSCode application was used.
